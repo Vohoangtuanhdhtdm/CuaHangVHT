@@ -1,0 +1,88 @@
+﻿@model CuaHangVHT.Data.Product
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="container">
+    <h4 style="padding:15px;" class="text-secondary mb-3">Edit Thông Tin Sản Phẩm</h4>
+    <hr />
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            @using (Html.BeginForm("Edit", "Product", FormMethod.Post))
+            {
+                @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+
+                @Html.HiddenFor(model => model.ProductId)
+
+                <!-- Name -->
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Name, new { @class = "form-label fw-bold" })
+                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- Description -->
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Description, new { @class = "form-label fw-bold" })
+                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = 3 })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- Price -->
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Price, new { @class = "form-label fw-bold" })
+                    @Html.TextBoxFor(model => model.Price, new { @class = "form-control", type = "number", step = "0.01" })
+                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- Stock -->
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Stock, new { @class = "form-label fw-bold" })
+                    @Html.TextBoxFor(model => model.Stock, new { @class = "form-control", type = "number" })
+                    @Html.ValidationMessageFor(model => model.Stock, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.CategoryId, "Category", new { @class = "form-label fw-bold" })
+                    @Html.DropDownListFor(model => model.CategoryId, (SelectList)ViewData["CategoryId"], "Chọn danh mục muốn sửa", new { @class = "form-select" })
+                    @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+                </div>
+
+
+                <!-- Image URL -->
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.ImageUrl, new { @class = "form-label fw-bold" })
+                    @Html.TextBoxFor(model => model.ImageUrl, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ImageUrl, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- CreatedAt -->
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.CreatedAt, new { @class = "form-label fw-bold" })
+                    @Html.TextBoxFor(model => model.CreatedAt, new { @class = "form-control", type = "datetime-local" })
+                    @Html.ValidationMessageFor(model => model.CreatedAt, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- UpdatedAt -->
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.UpdatedAt, new { @class = "form-label fw-bold" })
+                    @Html.TextBoxFor(model => model.UpdatedAt, new { @class = "form-control", type = "datetime-local" })
+                    @Html.ValidationMessageFor(model => model.UpdatedAt, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- Submit Button -->
+                <div style="padding:30px;display: flex; justify-content:center; align-items:center;" class="text-center">
+                    <button style="width:100px; height:50px; type="submit" class="btn btn-primary me-2">  <i class="bi bi-pencil-square"></i>Save</button>
+                 
+                    <a asp-action="Index" style="width:180px; height:50px;" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left"></i> Trang Quản Lý Chung
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>

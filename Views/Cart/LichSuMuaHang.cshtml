@@ -1,0 +1,52 @@
+﻿@model List<CuaHangVHT.Data.Order>
+@{
+    ViewData["Title"] = "Lịch Sử Mua Hàng";
+    Layout = "~/Views/Shared/_LayoutSystem.cshtml";
+}
+
+<div style="margin: 100px;" class="cart-main-area pt-4 pb-5">
+    <div class="container">
+        <h3 class="cart-page-title text-center mb-4">Lịch Sử Mua Hàng</h3>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Sản phẩm</th>
+                                <th>Số Lượng</th>
+                                <th>Tổng thanh toán</th>
+                                <th>Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var order in Model)
+                            {
+                                @foreach (var item in order.OrderDetails)
+                                {
+                                    <tr>
+                                        <td>@item.Product.Name</td>
+                                        <td>@item.Quantity</td>
+                                        <td>@string.Format("{0:C}", order.TotalPrice)</td>
+                                        <td>
+                                            <a class="btn btn-primary btn-sm"
+                                               asp-controller="Cart"
+                                               asp-action="ChiTietLichSuMuaHang"
+                                               asp-route-orderId="@order.OrderId">
+                                                Xem Chi Tiết
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:end;">
+            <a style=" border:1px solid #ced4da; padding:5px 10px; font-size:15px; border-radius:20px;" asp-controller="TaiKhoan" asp-action="Profile"><i class="icon-arrow-left-circle"></i> Quay lại</a>
+		</div>
+
+    </div>
+</div>

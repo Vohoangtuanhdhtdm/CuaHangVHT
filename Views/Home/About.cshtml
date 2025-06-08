@@ -1,0 +1,180 @@
+﻿
+@{
+    ViewData["Title"] = "About";
+    Layout = "~/Views/Shared/_LayoutSystem2.cshtml";
+}
+
+@section BreadCum {
+<div class="breadcrumb-area bg-gray" style="margin-top:100px">
+    <div class="container">
+        <div class="breadcrumb-content text-center">
+            <ul>
+                <li>
+                        <a style="color:#6c757d;" asp-controller="Home" asp-action="Index">Trang chủ</a>
+                </li>
+                <li class="active">
+                        <a asp-controller="Home" asp-action="About">Về tôi</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>}
+<div class="about-us-area pt-85">
+    <div class="container">
+        <div class="border-bottom-1 about-content-pb">
+            <div class="row">
+                <div class="col-lg-3 col-md-3">
+                    <div class="about-us-logo">
+                        <img style="width:210px; height:auto; border-radius:15px;" src="~/assets/images/banner/IntroduceBN.jpg" alt="logo">
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-9">
+                    <div class="about-us-content">
+                        <h3>Giới Thiệu</h3>
+                        <p>TuAn là một trong những local brand tại Việt Nam nhằm cung cấp thời trang và chất lượng với thiết kế cá tính. Kể từ khi thành lập vào năm 2024, TuAn đã phát triển thành một trong những địa chỉ thời trang tốt nhất.</p>
+                        <div class="signature">
+                            <h2>HoangTuan</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="service-area pb-120">
+    <div class="container">
+        <div class="service-wrap-border service-wrap-padding-3">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 service-border-1">
+                    <div class="single-service-wrap-2 mb-30">
+                        <div class="service-icon-2 icon-red">
+                            <i class="icon-cursor"></i>
+                        </div>
+                        <div class="service-content-2">
+                            <h3>Miễn Phí Vận Chuyển</h3>
+                            <p>Đơn Hàng Trên 999K</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 service-border-1 service-border-1-none-md">
+                    <div class="single-service-wrap-2 mb-30">
+                        <div class="service-icon-2 icon-red">
+                            <i class="icon-refresh "></i>
+                        </div>
+                        <div class="service-content-2">
+                            <h3>Đổi Trả 30 Ngày</h3>
+                            <p>Cho bất kỳ vấn đề nào</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 service-border-1">
+                    <div class="single-service-wrap-2 mb-30">
+                        <div class="service-icon-2 icon-red">
+                            <i class="icon-credit-card "></i>
+                        </div>
+                        <div class="service-content-2">
+                            <h3>Thanh toán an toàn</h3>
+                            <p>100% Chính Hãng</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="single-service-wrap-2 mb-30">
+                        <div class="service-icon-2 icon-red">
+                            <i class="icon-earphones "></i>
+                        </div>
+                        <div class="service-content-2">
+                            <h3>Hỗ Trợ 24h</h3>
+                            <p>Chuyên Viên Chuyên Nghiệp</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style=" display: flex; flex-wrap: wrap; gap: 16px; padding: 16px; line-height: 2.5; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+    <!-- Phần tử đầu tiên -->
+    <div style="padding: 16px; flex: 0 0 100%;  border-radius: 16px; height: 600px;">
+        <div style="width:100%; height:100%;" class="banner-wrap ">
+            <div style="width:100%; height:100%;" class="banner-img banner-img-zoom">
+                <a><img style="border-radius: 16px; width:100%; height:100%; object-fit:cover;" src="~/assets/images/banner/BOO.png" alt=""></a>
+			</div>
+            <div  class="banner-content-1">
+                <h2 style="color:#ffff;/* From https://css.glass */
+background: rgba(255, 255, 255, 0.15);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(0.3px);
+-webkit-backdrop-filter: blur(0.3px);
+border: 1px solid rgba(255, 255, 255, 0.5); border-radius:16px;padding:4px; font-weight:bold">
+                    "Thời Trang Không Phân Biệt Tuổi Tác" <br>
+                </h2>
+                <p style="/* From https://css.glass */
+background: rgba(255, 255, 255, 0.15);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(4px);
+-webkit-backdrop-filter: blur(4px);font-weight:bold; border-radius:16px;padding:2px;color:#ffff; ">"Chúng tôi tin rằng mỗi độ tuổi đều có thể tỏa sáng với phong cách riêng biệt!"</p>
+                <div class="btn-style-1">
+                    <a style="border-radius:18px;" class="animated btn-1-padding-2" asp-controller="HangHoa" asp-action="Index">Khám phá ngay</a>
+                </div>
+            </div>
+		</div>
+
+    </div>
+
+    <!-- Phần tử thứ hai -->
+    <div style="padding: 16px; flex: 1; background-color: #e9ecef; border-radius: 16px; height: 300px;">
+        <a><img style="border-radius: 16px; width:100%; height:100%; object-fit:cover;" src="~/assets/images/banner/BOO3.jpg" alt=""></a>
+    </div>
+
+    <!-- Phần tử thứ ba -->
+    <div style="padding: 16px; flex: 2; background-color: #e9ecef; border-radius: 16px; height: 300px;">
+        <a><img style="border-radius: 16px; width:100%; height:100%; object-fit:cover;" src="~/assets/images/banner/BOO2.png" alt=""></a>
+    </div>
+    <!-- Phần tử thứ ba -->
+    <div style="padding: 16px; flex: 1; background-color: #e9ecef; border-radius: 16px; height: 300px;">
+        <a><img style="border-radius: 16px; width:100%; height:100%; object-fit:cover;" src="~/assets/images/banner/BOO4.jpg" alt=""></a>
+    </div>
+    
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 16px; padding: 16px; line-height: 2.5; margin-bottom:200px;">
+
+    <!-- Phần tử đầu 1 -->
+    <div style="padding: 16px; display:flex; align-items:center; border-radius: 16px; height:100%;">
+        <div style="padding: 16px; flex: 1; border-radius: 16px; width:100%; height:80%;">
+            <a><img style="border-radius: 16px; width:100%; height:100%; object-fit:cover;" src="~/assets/images/banner/para2.jpg" alt=""></a>
+        </div>
+        <!-- Phần tử thứ 2 -->
+        
+        <div style="padding: 16px; flex: 1; border-radius: 16px; width:100%; height:80%;" >
+            <a ><img style="border-radius: 16px; width:100%; height:100%; object-fit:cover;" src="~/assets/images/banner/para42.jpg" alt=""></a>
+        </div>
+    </div>
+
+
+    <!-- Phần tử thứ 2 -->
+    <div style="padding: 16px; flex: 2; background-color: #e9ecef; border-radius: 16px; height: 400px;">
+        <a><img style="border-radius: 16px; width:100%; height:100%; object-fit:cover;" src="~/assets/images/banner/paraKem.png" alt=""></a>
+    </div>
+    <!-- Phần tử thứ 3 -->
+    <div style="padding: 16px; flex: 1; background-color:  #e9ecef; border-radius: 16px; height: 400px;">
+        <a><img style="border-radius: 16px; width:100%; height:100%; object-fit:cover;" src="~/assets/images/banner/Para1.jpg" alt=""></a>
+	</div>
+    <!-- Phần tử thứ 4 -->
+    <div style="padding: 16px; flex: 1; background-color:  #e9ecef; border-radius: 16px; height: 400px;">
+        <a><img style="border-radius: 16px; width:100%; height:100%; object-fit:cover;" src="~/assets/images/banner/Para4.jpg" alt=""></a>
+    </div>
+</div>
+
+
+@* 
+<div class="banner-content-1">
+    <h2>Mẫu Khoác Zara Đóng Hộp <br>Underwear</h2>
+    <p>Co giãn, tươi mát giúp bạn luôn thoải mái</p>
+    <div class="btn-style-1">
+        <a style="border-radius:18px;" class="animated btn-1-padding-2" asp-controller="HangHoa" asp-action="Index">Xem Ngay</a>
+    </div>
+</div> *@

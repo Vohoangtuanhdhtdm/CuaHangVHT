@@ -1,0 +1,46 @@
+﻿@model IEnumerable<CuaHangVHT.Data.OrderDetailPromotion>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div >
+    <a asp-action="Create">Thêm Sản Phẩm Khuyến Mãi</a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Sản Phẩm
+            </th>
+            <th>
+                Chương trình ưu đãi
+            </th>
+            <th>Sale%</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Promotion.PromotionName)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.Promotion.DiscountPercent)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.OrderDetailPromotionId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.OrderDetailPromotionId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.OrderDetailPromotionId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

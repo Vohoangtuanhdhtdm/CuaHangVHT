@@ -1,0 +1,80 @@
+﻿@model CuaHangVHT.ViewModels.DangKyViewModel // để form truyền dữ liệu vào đây
+@{
+    ViewData["Title"] = "Dangky";
+    Layout = "_LayoutSystem";
+}
+
+<div class="login-register-area pt-115 pb-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-12 ms-auto me-auto">
+                <div class="login-register-wrapper">
+                    <div class="login-register-tab-list">
+                        
+                        <a>
+                            <h4> Đăng Ký </h4>
+                        </a>
+                    </div>
+                    <div>
+                         <div class="login-form-container">
+                                <div class="login-register-form">
+                                <form asp-controller="TaiKhoan" asp-action="Dangky" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label asp-for="full_name"></label>
+                                        <input asp-for="full_name" class="form-control" />
+                                        <span asp-validation-for="full_name" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="address"></label>
+                                        <input asp-for="address" class="form-control" />
+                                        <span asp-validation-for="address" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="phone_number"></label>
+                                        <input asp-for="phone_number" class="form-control" />
+                                        <span asp-validation-for="phone_number" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Username"></label>
+                                        <input asp-for="Username" class="form-control" />
+                                        <span asp-validation-for="Username" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Email"></label>
+                                        <input asp-for="Email" class="form-control" />
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Password"></label>
+                                        <input asp-for="Password" class="form-control" type="password" />
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label asp-for="ImgAvater" class="form-label fw-semibold text-secondary mb-2">Ảnh đại diện</label>
+                                        <div class="file-upload-area border border-dashed rounded-3 p-4 text-center position-relative
+         border-secondary hover:bg-light hover:border-primary transition duration-200 ease-in-out">
+                                            <input type="file" asp-for="ImgAvater" name="ImgAvater"
+                                                   class="form-control-file position-absolute top-0 start-0 opacity-0 w-100 h-100"
+                                                   style="cursor: pointer;" />
+                                            <div class="upload-placeholder">
+                                                <i class="bi bi-cloud-arrow-up-fill display-4 text-primary mb-2" style="font-size: 2rem;"></i>
+                                                <p class="mb-0 text-muted" style="font-size: 0.9rem;">Nhấn vào đây để tải hình ảnh lên</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-text text-danger mt-1">
+                                            <span asp-validation-for="ImgAvater"></span>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Đăng Ký</button>
+                                </form>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+

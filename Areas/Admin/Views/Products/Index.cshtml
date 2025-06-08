@@ -1,0 +1,98 @@
+﻿@model IEnumerable<CuaHangVHT.Data.Product>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<!-- [Leads] start -->
+<div style="width:1200px; margin:0 auto;" class="col-xxl-8">
+    <div class="card stretch stretch-full" >
+        <div class="card-header">
+            <h5 class="card-title">Hàng Hóa</h5>
+            <a asp-controller="Products" asp-action="Create" class="btn btn-md btn-primary">
+                <i class="feather-plus me-2"></i>
+                <span>Thêm Sản Phẩm Mới</span>
+            </a>
+        </div>
+        <div class="card-body custom-card-action p-0">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead>
+                        <tr class="border-b">
+                            <th scope="row">Sản Phẩm</th>
+                            <th>Số Lượng Hàng</th>
+                            <th>Ngày Bán</th>
+                            <th>Danh Mục </th>
+                            <th class="text-end"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="avatar-image">
+                                            <img src="~/assets/images/product/@item.ImageUrl" alt="" class="img-fluid">
+                                        </div>
+                                        <a href="javascript:void(0);">
+                                            <span class="d-block">@item.Name</span>
+                                          
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="badge bg-gray-200 text-dark">@item.Stock</span>
+                                </td>
+                                <td>@(item.CreatedAt.HasValue ? item.CreatedAt.Value.ToString("dd/MM/yyyy") : "N/A")</td>
+                                <td>
+                                    <!--Lấy qua bảng Category-->
+                                    <span class="badge bg-gray-200 text-dark">@item.Category.Name</span>
+                                </td>
+                                <td class="text-end">
+                                    <div class="dropdown">
+                                        <a href="javascript:void(0);" class="avatar-text avatar-sm" data-bs-toggle="dropdown" data-bs-offset="25, 25">
+                                            <div data-bs-toggle="tooltip" title="Options">
+                                                <i class="feather-more-vertical"></i>
+                                            </div>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-end">
+                                            <a asp-controller="Products" asp-action="Edit" asp-route-id="@item.ProductId" class="dropdown-item btn btn-md bg-soft-warning text-dark"><i class="bi bi-pencil-square"></i>Edit</a>
+                                            <a asp-controller="Products" asp-action="Details" asp-route-id="@item.ProductId" class="dropdown-item btn btn-md bg-soft-primary text-white"><i class="bi bi-arrow-up-left-square"></i>Details</a>
+                                            <a asp-controller="Products" asp-action="Delete" asp-route-id="@item.ProductId" class="dropdown-item btn btn-md bg-soft-danger text-danger"><i class="bi bi-x-circle-fill"></i>Delete</a>
+                                            
+                                        </div>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        }
+                      
+                       
+                    </tbody>
+                </table>
+               
+            </div>
+        </div>
+        <div class="card-footer">
+            <ul class="list-unstyled d-flex align-items-center gap-2 mb-0 pagination-common-style">
+                <li>
+                    <a href="javascript:void(0);"><i class="bi bi-arrow-left"></i></a>
+                </li>
+                <li><a href="javascript:void(0);" class="active">1</a></li>
+                <li><a href="javascript:void(0);">2</a></li>
+                <li>
+                    <a href="javascript:void(0);"><i class="bi bi-dot"></i></a>
+                </li>
+                <li><a href="javascript:void(0);">8</a></li>
+                <li><a href="javascript:void(0);">9</a></li>
+                <li>
+                    <a href="javascript:void(0);"><i class="bi bi-arrow-right"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- [Leads] end -->

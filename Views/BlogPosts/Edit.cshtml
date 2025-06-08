@@ -1,0 +1,56 @@
+﻿@model CuaHangVHT.Data.BlogPost
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutSystem.cshtml";
+}
+
+<div style="margin: 150px;">
+<h1>Chỉnh Sửa Nội Dung Bài Viết</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdBlogPost" />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label">Tiêu Đề</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+                <div class="form-group">
+                    <label asp-for="Content" class="control-label">Nội Dung</label>
+                    <textarea asp-for="Content" class="form-control"></textarea>
+                    <span asp-validation-for="Content" class="text-danger"></span>
+                </div>
+                <input type="hidden" asp-for="ImageUrl" />
+            <div class="form-group">
+                <label asp-for="CreatedAt" class="control-label">Ngày Đăng</label>
+                <input asp-for="CreatedAt" class="form-control" />
+                <span asp-validation-for="CreatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label">ID Người Viết</label>
+                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+</div>
+
+@section Scripts {
+    <script>
+        CKEDITOR.replace('Content'); // Khởi tạo CKEditor
+    </script>
+}

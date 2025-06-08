@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewData["Title"] = "Contact";
+    Layout = "~/Views/Shared/_LayoutSystem2.cshtml";
+}
+
+@section BreadCum {
+<div style="margin-top:100px;" class="breadcrumb-area bg-gray">
+    <div class="container">
+        <div class="breadcrumb-content text-center">
+            <ul>
+                <li>
+                        <a style="color:#6c757d;" asp-controller="Home" asp-action="Index">Trang chủ</a>
+                </li>
+                    <li class="active">
+                        <a asp-controller="Home" asp-action="Contact">Liên Hệ</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+}
+<div class="contact-area pt-115 pb-120">
+    <div class="container">
+        <div class="contact-info-wrap-3 pb-85">
+            <h3>Thông Tin Liên Hệ</h3>
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    <div class="single-contact-info-3 text-center mb-30">
+                        <i class="icon-location-pin "></i>
+                        <h4>Địa chỉ</h4>
+                        <p>06 Trần Văn Ơn, Phú Hoà, TDM, BD</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="single-contact-info-3 extra-contact-info text-center mb-30">
+                        <ul>
+                            <li><i class="icon-screen-smartphone"></i> 012-345-6789 </li>
+                            <li><i class="icon-envelope "></i> <a href="#"> info@nhom3.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="single-contact-info-3 text-center mb-30">
+                        <i class="icon-clock "></i>
+                        <h4>Thời gian mở cửa</h4>
+                        <p>Các ngày trong tuần: 9:00am - 22:00pm </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="get-in-touch-wrap">
+            <h3>Liên Hệ Ngay</h3>
+            <div class="contact-from contact-shadow">
+                <form onsubmit="return sendMail(this);">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <input name="name" type="text" placeholder="Tên" required>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <input name="email" type="email" placeholder="Email" required>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <input name="subject" type="text" placeholder="Tiêu đề" required>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <textarea name="message" placeholder="Nhập nội dung..." required></textarea>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <button class="submit" type="submit">Gửi</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+       
+        <script>
+            function sendMail(form) {
+                const name = form.name.value;
+                const email = form.email.value;
+                const subject = form.subject.value;
+                const message = form.message.value;
+
+                // Thay địa chỉ email của bạn ở đây
+                const recipient = "vohoangtuan1980t@gmail.com";
+
+                // Gửi email qua mailto
+                window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+                    `Tên: ${name}\nEmail: ${email}\n\nNội dung:\n${message}`
+                )}`;
+                return false; // Dừng hành vi gửi form mặc định
+            }
+        </script>
+        
+        <div class="contact-map pt-120">
+            
+            <iframe class="map-size" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.772663892439!2d106.67290467480797!3d10.98052468918095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d1085e2b1c37%3A0x73bfa5616464d0ee!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBUaOG7pyBE4bqndSBN4buZdA!5e0!3m2!1svi!2s!4v1732866549358!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</div>
+
+
+   

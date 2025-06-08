@@ -1,0 +1,173 @@
+﻿@model IEnumerable<CuaHangVHT.ViewModels.CartItemVM>
+@{
+    ViewData["Title"] = "MuaHang";
+    Layout = "~/Views/Shared/_LayoutSystem.cshtml";
+}
+
+<div class="checkout-main-area pt-120 pb-120">
+    <div style="max-width:1400px;" class="container">
+        <form asp-action="MuaHang" asp-controller="Cart">
+        <div class="checkout-wrap pt-30">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="billing-info-wrap mr-50">
+                        <h3>Chi Tiết Đơn Hàng</h3>
+                        
+                        <div class="row">
+                            <!-- Email và Điện thoại sắp xếp song song -->
+                            <div class="col-lg-6 col-md-6">
+                                <div class="billing-info mb-20">
+                                    <label>Tên <abbr class="required" title="required">*</abbr></label>
+                                    <input name="Hoten" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="billing-info mb-20">
+                                    <label>Điện thoại <abbr class="required" title="required">*</abbr></label>
+                                    <input name="DienThoai" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <!-- Địa chỉ đặt toàn bộ chiều rộng -->
+                            <div class="col-lg-12">
+                                <div class="billing-info mb-20">
+                                    <label>Địa chỉ <abbr class="required" title="required">*</abbr></label>
+                                    <input name="DiaChi" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="billing-info mb-20">
+                                    <label>Email <abbr class="required" title="required">*</abbr></label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Tùy chọn ship và ghi chú -->
+                        <div style="display:flex; align-items:center;" class="checkout-account mt-25">
+                                <input style="width: 20px; height: 20px; border-radius:100%; margin: 5px;" type="checkbox" name="GiongKhachHang" class="form-check-input" id="GiongKhachHang" value="false">
+                                <label style="" class="form-check-label" for="GiongKhachHang">Mua cho bạn?</label>
+                        </div>
+                        <div class="additional-info-wrap mt-4">
+                            <label>Ghi Chú Đơn Hàng</label>
+                            <textarea name="GhiChu" class="form-control" placeholder="Ghi chú về đơn đặt hàng của bạn, ví dụ: ghi chú đặc biệt để giao hàng... " name="message"></textarea>
+                        </div>
+                       
+                    </div>
+                </div>
+
+                <!-- Cột Đơn Hàng Của Bạn -->
+                <div class="col-lg-5">
+                    <div class="your-order-area">
+                        <h3>Đơn Hàng Của Bạn</h3>
+                        <div class="your-order-wrap gray-bg-4 p-3 rounded">
+                            <div class="your-order-info-wrap">
+                                <!-- Thông tin sản phẩm -->
+                                <div class="your-order-info">
+                                    <ul class="list-unstyled">
+											<li class="d-flex justify-content-between"><strong>Sản Phẩm</strong> <span><strong>Giá</strong></span></li>
+                                    </ul>
+                                </div>
+                                <div class="your-order-middle">
+                                    <ul class="list-unstyled">
+                                        @foreach(var item in Model)
+                                            {
+                                                <li class="d-flex justify-content-between">@item.TenHH X <span>(SL: @item.SoLuong, Size: @item.TenSize)</span><span> @string.Format("{0:N0} VND", @item.DonGia)</span></li>
+                                            }
+                                    </ul>
+                                </div>
+                                <!-- Tổng giá và Vận Chuyển -->
+                                <div class="your-order-info order-subtotal">
+                                    <ul class="list-unstyled">
+                                            @foreach (var item in Model){
+                                                <li class="d-flex justify-content-between">Tổng <span> @string.Format("{0:N0} VND",@item.ThanhTien )</span></li>
+											}
+                                    </ul>
+                                </div>
+                               
+                                <!-- Số tiền cần thanh toán -->
+                                <div class="your-order-info order-total">
+                                    <ul class="list-unstyled">
+                                            <li class="d-flex justify-content-between"><strong>Số Tiền Cần Thanh Toán</strong> <span>@Model.Sum(p => p.ThanhTien).ToString("#,##0.00")</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Phương thức thanh toán -->
+                        <div class="payment-method mt-4">
+                            <!-- Phương thức thanh toán 1 -->
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" name="payment" type="radio" id="payment_method_1" value="COD" >
+                                <label class="form-check-label" for="payment_method_1">
+                                    Thanh Toán Khi Nhận Hàng
+                                </label>
+
+                            </div>
+
+              
+                            <!-- Phương thức thanh toán 3 -->
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="radio" name="payment" id="payment_method_3" value="vnpay">
+                                <label class="form-check-label" for="payment_method_3">
+                                    Thanh Toán VnPay
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Nút đặt hàng -->
+                    <div class="Place-order mt-4">
+                        <button class="btn btn-primary w-100 text-center py-2">Đặt Hàng</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://www.paypal.com/sdk/js?client-id=@ViewBag.PaypalClientdId"></script>
+    <script>
+        $(document).ready(function () {
+            $("#GiongKhachHang").change(function () {
+                if ($(this).prop("checked")) {
+                    $(this).val(true);
+                    $(".delivery-info").addClass("d-none");
+                } else {
+                    $(this).val(false);
+                    $(".delivery-info").removeClass("d-none");
+                }
+            });
+        });
+
+        paypal.Buttons({
+            style: {
+                layout: 'vertical',
+                color: 'silver',
+                tagline: 'false'
+            },
+            createOrder: (data, actions) => {
+                return fetch("/Cart/create-paypal-order", {
+                    method: "post",
+                }).then((response) => {
+                    if (!response.ok) {
+                        return response.json().then(error => { throw error; });
+                    }
+
+                    return response.json();
+                }).then((order) => order.id)
+                .catch(error => alert(error.message));
+            },
+            onApprove: (data, actions) => {
+                return fetch(`/Cart/capture-paypal-order?orderId=${data.orderID}`, {
+                    method: "post",
+                }).then((response) => {
+                    if (!response.ok) {
+                        return response.json().then(error => { throw error; });
+                    }
+
+                    //Đổi địa chỉ tới action thông báo thành công
+                    window.location.href = "/Cart/PaymentSuccess";
+                }).catch(error => alert(error.message));
+            }
+        }).render('#paypal-button-container');
+    </script>
+}

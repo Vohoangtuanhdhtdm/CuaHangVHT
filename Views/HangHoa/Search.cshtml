@@ -1,0 +1,20 @@
+﻿@model IEnumerable<CuaHangVHT.ViewModels.HangHoaVM>
+@{
+    ViewData["Title"] = "Search";
+    Layout = "_DanhSachHangHoa";
+}
+
+<div class="col-lg-9">
+    <div class="shop-topbar-wrapper">
+        <div class="shop-topbar-left">
+            <div class="view-mode nav">
+                <a class="active" href="#shop-1" data-bs-toggle="tab"><i class="icon-grid"></i></a>
+                <a href="#shop-2" data-bs-toggle="tab"><i class="icon-menu"></i></a>
+            </div>
+
+        </div>
+    </div>
+    <!--Product Area-->
+    @await Html.PartialAsync("SanPham", Model)
+</div>
+

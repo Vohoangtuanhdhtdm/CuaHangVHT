@@ -1,0 +1,145 @@
+﻿@model IPagedList<CuaHangVHT.Data.BlogPost>
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutSystem.cshtml";
+}
+
+<div style="margin-top:90px;" class="breadcrumb-area bg-gray">
+    <div class="container">
+        <div class="breadcrumb-content text-center">
+            <ul>
+                <li>
+                    <a asp-controller="Home" asp-action="Index">Trang Chủ</a>
+                </li>
+                <li class="active"> <a asp-controller="BlogPosts" asp-action="Index"> Blog</a>  </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div style="padding: 50px;">
+    @if ((!User.IsInRole("Customer")) && User.Identity.IsAuthenticated)
+    {
+          <a style="border:2px solid #111; border-radius:16px; padding:15px 30px;" asp-action="Create">Thêm Bài Mới</a>
+    }
+  
+	
+</div>
+
+<div class="blog-area pt-120 pb-120">
+            <div class="container">
+                <div class="row">
+            @foreach(var item in Model)
+            {
+                 <div class="col-lg-4 col-md-6 col-12 col-sm-6">
+                        <div class="blog-wrap mb-40">
+                            <div style="height:350px;" class="blog-img mb-20">
+                                <a href="blog-details.html"><img style="width:100%; height:auto;" src="~/assets/images/blog/@item.ImageUrl" alt="blog-img"></a>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <div style="display:flex; align-items:center;">
+									    <div style="padding:5px;">
+                                            <img style="width:30px; height:auto; object-fit:cover; border-radius:100%;" src="~/assets/customer/@item.User.ImgAvater" />
+                                         </div>
+                                        <div style="display:flex; flex-direction:column; justify-content:center; ">
+                                        <a asp-controller="TaiKhoan" asp-action="Profile"  style="color:#495057; font-weight:bolder">@item.User.FullName </a>
+                                            <span style="color:#495057; font-size:small; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">@item.CreatedAt</span>
+									     </div>
+								    </div>
+							    </div>
+                                
+                               <h1><a asp-controller="BlogPosts" asp-action="Details" asp-route-id="@item.IdBlogPost">@item.Title</a></h1>
+                             @*   Nếu là Admin sẽ có 2 cái nút này *@
+                            @if ((!User.IsInRole("Customer")) && User.Identity.IsAuthenticated)
+                            {
+                                <a style="margin-top:5px;padding:5px 10px; border:1px solid #8d99ae; color:#2b2d42; border-radius:8px;" asp-controller="BlogPosts" asp-action="Edit" asp-route-id="@item.IdBlogPost">Edit</a>
+                                 <a style="margin-top:5px;padding:5px 10px;border:1px solid #8d99ae;  color:#2b2d42; border-radius:8px;" asp-controller="BlogPosts" asp-action="Delete" asp-route-id="@item.IdBlogPost">Delete</a>
+                            }
+                            
+                            </div>
+                        </div>
+                    </div>
+
+               
+            }
+                   
+                </div>
+            </div>
+    <div class="pro-pagination-style text-center mt-10">
+        @Html.PagedListPager(
+                 Model,
+                 page => Url.Action("Index", new { page }),
+                 new PagedListRenderOptions
+        {
+            DisplayLinkToFirstPage = PagedListDisplayMode.IfNeeded,  // Thay đổi ở đây
+            DisplayLinkToLastPage = PagedListDisplayMode.IfNeeded,   // Thay đổi ở đây
+            DisplayLinkToPreviousPage = PagedListDisplayMode.IfNeeded, // Thay đổi ở đây
+            DisplayLinkToNextPage = PagedListDisplayMode.IfNeeded,    // Thay đổi ở đây
+            MaximumPageNumbersToDisplay = 5,
+            ActiveLiElementClass = "active",
+            UlElementClasses = new[] { "pagination", "justify-content-center" } 
+        })
+    </div>
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* <table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            @* <th>
+                @Html.DisplayNameFor(model => model.Content)
+            </th> *@
+            @* <th>
+                @Html.DisplayNameFor(model => model.CreatedAt)
+            </th> *@
+  @*           <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.UserId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdBlogPost">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdBlogPost">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdBlogPost">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table> *@
+@* </div> *@ 

@@ -1,0 +1,51 @@
+﻿@model CuaHangVHT.ViewModels.DatLaiMatKhauViewModel
+@{
+    ViewData["Title"] = "DatLaiMatKhau";
+    Layout = "~/Views/Shared/_LayoutSystem.cshtml";
+}
+
+
+
+<div class="login-register-area pt-115 pb-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-12 ms-auto me-auto">
+                <div class="login-register-wrapper">
+                    <div class="login-register-tab-list ">
+                        <a class="active">
+                            <h4> Quên Mật Khẩu  </h4>
+                        </a>
+
+                    </div>
+                    <div>
+                        <div class="login-form-container">
+                            <div class="login-register-form">
+                                <form asp-action="DatLaiMatKhau" method="post">
+                                    <input type="hidden" asp-for="Token" />
+                                    <input type="hidden" asp-for="Email" />
+
+                                    <div class="form-group">
+                                        <label asp-for="NewPassword"></label>
+                                        <input asp-for="NewPassword" class="form-control" />
+                                        <span asp-validation-for="NewPassword" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label asp-for="ConfirmPassword"></label>
+                                        <input asp-for="ConfirmPassword" class="form-control" />
+                                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary">Đặt lại mật khẩu</button>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

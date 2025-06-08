@@ -1,0 +1,77 @@
+﻿@model List<CuaHangVHT.Data.Product>
+
+
+
+<div class="related-product pb-115">
+    <div class="container">
+        <div class="section-title mb-45 text-center">
+            <h2>Sản Phẩm Liên Quan</h2>
+        </div>
+         
+                <div class="related-product-active">
+                   
+                        
+                           
+      
+                        @for (var i = 0; i<Model.Count(); i++)
+                        {
+                        if (i > 4) break; <div class="product-plr-1">
+                        <div class="single-product-wrap">
+                            <div class="product-img product-img-zoom mb-15">
+                            <a asp-controller="HangHoa" asp-action="Detail" asp-route-id="@Model[i].ProductId">
+                                    <img src="~/assets/images/product/@Model[i].ImageUrl" alt="">
+                                    </a>
+                                    <div class="product-action-2 tooltip-style-2">
+                                        <button title="Wishlist"><i class="icon-heart"></i></button>
+                                        <button title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="icon-size-fullscreen icons"></i></button>
+                                        <button title="Compare"><i class="icon-refresh"></i></button>
+                                    </div>
+                                </div>
+                            <div class="product-content-wrap-2 text-center">
+                                    <div class="product-rating-wrap">
+                                        <div class="product-rating">
+                                            <i class="icon_star"></i>
+                                            <i class="icon_star"></i>
+                                            <i class="icon_star"></i>
+                                            <i class="icon_star"></i>
+                                            <i class="icon_star gray"></i>
+                                        </div>
+                                        <span>(2)</span>
+                                    </div>
+                            <h3><a asp-controller="HangHoa" asp-action="Detail" asp-route-id="@Model[i].ProductId">@Model[i].Name</a></h3>
+                                    <div class="product-price-2">
+                                    <span>@Model[i].Price</span>
+                                    </div>
+                                </div>
+                            <div class="product-content-wrap-2 product-content-position text-center">
+                                    <div class="product-rating-wrap">
+                                        <div class="product-rating">
+                                            <i class="icon_star"></i>
+                                            <i class="icon_star"></i>
+                                            <i class="icon_star"></i>
+                                            <i class="icon_star"></i>
+                                            <i class="icon_star gray"></i>
+                                        </div>
+                                        <span>(2)</span>
+                                    </div>
+                                    <h3><a >@Model[i].Name</a></h3>
+                                    <div class="product-price-2">
+                                        <span>@Model[i].Price</span>
+                                    </div>
+                                    <div class="pro-add-to-cart">
+                                <a style="padding: 5px 10px;" class="btn btn-danger" asp-controller="HangHoa" asp-action="Detail" asp-route-id="@Model[i].ProductId" title="Add to Cart">Chi Tiết</a>
+                                    </div>
+                                </div>
+
+					</div>
+				</div>
+			}
+
+                        
+                
+
+                </div>
+            
+        
+    </div>
+</div>

@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "SanPhamDowSelling";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div style="width:800px; height:100px;"></div>
+<div style="width:800px; height:400px; margin:0 auto;" id="chart"></div>
+<div style="width:800px; height:100px;"></div>
+@section Scripts
+{
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Lấy dữ liệu đã được truyền từ ViewBag
+            var chartOptions = @Html.Raw(ViewBag.ChartData);
+
+            // Khởi tạo chart
+            var chart = new ApexCharts(document.querySelector("#chart"), chartOptions);
+            chart.render();
+        });
+    </script>
+}
+

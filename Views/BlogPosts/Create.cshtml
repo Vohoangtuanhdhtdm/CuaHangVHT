@@ -1,0 +1,64 @@
+﻿@model CuaHangVHT.ViewModels.BlogVM
+
+@{
+    ViewData["Title"] = "Tạo bài viết mới";
+    Layout = "~/Views/Shared/_LayoutSystem.cshtml";
+}
+
+<div style="margin:150px;">
+<h1>@ViewData["Title"]</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+            <form asp-controller="BlogPosts" asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="All" class="alert alert-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Content" class="control-label"></label>
+                <textarea asp-for="Content" class="form-control"></textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+                <div class="form-group">
+                    <label asp-for="ImgBlog" class="form-label fw-semibold text-secondary mb-2">Hình nền Blog</label>
+                    <div class="file-upload-area border border-dashed rounded-3 p-4 text-center position-relative
+         border-secondary hover:bg-light hover:border-primary transition duration-200 ease-in-out">
+                        <input type="file" asp-for="ImgBlog" name="ImgBlog"
+                               class="form-control-file position-absolute top-0 start-0 opacity-0 w-100 h-100"
+                               style="cursor: pointer;" />
+                        <div class="upload-placeholder">
+                            <i class="bi bi-cloud-arrow-up-fill display-4 text-primary mb-2" style="font-size: 2rem;"></i>
+                            <p class="mb-0 text-muted" style="font-size: 0.9rem;">Nhấn vào đây để tải hình ảnh lên</p>
+                        </div>
+                    </div>
+                    <div class="form-text text-danger mt-1">
+                        <span asp-validation-for="ImgBlog"></span>
+                    </div>
+                </div>
+
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Tạo bài viết" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+@section Scripts{
+    <script>
+        CKEDITOR.replace('Content'); // Khởi tạo CKEditor
+    </script>
+}
+

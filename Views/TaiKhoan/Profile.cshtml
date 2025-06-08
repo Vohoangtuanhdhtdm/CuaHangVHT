@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewData["Title"] = "Profile";
+    Layout = "~/Views/Shared/_LayoutSystem.cshtml";
+}
+
+<div style="width:600px; height:auto; margin: 100px auto;">
+    <div class="card stretch stretch-full">
+        <div class="card-body">
+            <div class="mb-4 text-center">
+                <div class="wd-150 ht-250 mx-auto mb-3 position-relative">
+                    <div class="avatar-image">
+                        <img style="width:300px; height:auto; border-radius:25%;" src="~/assets/customer/@ViewData["ImgAvartar"]" alt="" class="img-fluid">
+                    </div>
+                    <div class="wd-10 ht-10 text-success rounded-circle position-absolute translate-middle" style="top: 76%; right: 10px">
+                        <i class="bi bi-patch-check-fill"></i>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <a href="javascript:void(0);" class="fs-14 fw-bold d-block"> @ViewData["Name"]</a>
+                    <a href="javascript:void(0);" class="fs-12 fw-normal text-muted d-block"> @ViewData["Email"]</a>
+                </div>
+                <div class="fs-12 fw-normal text-muted text-center d-flex flex-wrap gap-3 mb-4">
+                    <div class="flex-fill py-3 px-4 rounded-1 d-none d-sm-block border border-dashed border-gray-5">
+						<h6 class="fs-15 fw-bolder">Lịch sử đặt hàng</h6>
+                        <a style="border:1px solid #ced4da; padding:5px 10px; font-size:10px; border-radius:20px;" asp-controller="Cart" asp-action="LichSuMuaHang">Xem lịch sử<i style="margin-left:5px;" class="icon-arrow-right-circle"></i></a>
+                    </div>
+                    <div class="flex-fill py-3 px-4 rounded-1 d-none d-sm-block border border-dashed border-gray-5">
+						<h6 class="fs-15 fw-bolder">Hạng Khách Hàng</h6>
+						<p class="fs-12 text-muted mb-0">Kim Cương</p>
+                    </div>
+                    
+                </div>
+            </div>
+            <ul class="list-unstyled mb-4">
+                <li class="hstack justify-content-between mb-4">
+                    <span class="text-muted fw-medium hstack gap-3"><i class="feather-map-pin"></i>Địa chỉ</span>
+                    <a href="javascript:void(0);" class="float-end">@ViewData["CustomerAdress"]</a>
+                </li>
+                <li class="hstack justify-content-between mb-4">
+                    <span class="text-muted fw-medium hstack gap-3"><i class="feather-phone"></i>Số điện thoại</span>
+                    <a href="javascript:void(0);" class="float-end">@ViewData["DienThoai"]</a>
+                </li>
+                <li class="hstack justify-content-between mb-0">
+                    <span class="text-muted fw-medium hstack gap-3"><i class="feather-mail"></i>Vai Trò</span>
+                    <a href="javascript:void(0);" class="float-end">@ViewData["Role"]</a>
+                </li>
+            </ul>
+            <div class="d-flex gap-2 text-center pt-4">
+                <a style="border:1px solid #ced4da" asp-controller="TaiKhoan" asp-action="DangXuat" class="w-50 text-danger btn btn-light-brand">
+                    <i class="feather-trash-2 me-2"></i>
+                    <span>Đăng Xuất</span>
+                </a>
+                <a href="javascript:void(0);" class="w-50 btn btn-primary">
+                    <i class="feather-edit me-2"></i>
+                    <span>Edit Thông Tin Cá Nhân</span>
+                </a>
+            </div>
+         </div>
+    </div>
+</div>

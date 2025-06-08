@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "_DanhSachHangHoa";
+    Layout = "_LayoutSystem.cshtml";
+}
+
+@RenderSection("BreadCum", required: false)
+
+<div class="shop-area pt-120 pb-120">
+    <div class="container">
+        <div class="row flex-row-reverse">
+            @RenderBody()
+            <div class="col-lg-3">
+                <div class="sidebar-wrapper sidebar-wrapper-mrg-right">
+                    <div class="sidebar-widget mb-40">
+                        <h4 class="sidebar-widget-title">Tìm kiếm </h4>
+                        <div class="sidebar-search">
+                            <form name="SearchForm" class="sidebar-search-form" asp-action="Search" asp-controller="HangHoa">
+                                <input type="search" placeholder="keywords" name="tenSP" id="searchText">
+                                <button id="searchButton" onclick="SearchForm.submit()">
+                                    <i class="icon-magnifier"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="sidebar-widget shop-sidebar-border mb-35 pt-40">
+                        <h4 class="sidebar-widget-title">Danh Mục </h4>
+                        <div class="shop-catigory">
+                            @await Component.InvokeAsync("MenuLoai")
+                        </div>
+                    </div>
+                   
+                    
+
+                    <div class="sidebar-widget shop-sidebar-border pt-40">
+                        <h4 class="sidebar-widget-title">Phổ Biến</h4>
+                        <div class="tag-wrap sidebar-widget-tag">
+                            <a href="#">Áo Khoác</a>
+                            <a href="#">Quần</a>
+                            <a href="#">Mũ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,71 @@
+﻿@model IPagedList<CuaHangVHT.ViewModels.HangHoaVM>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_DanhSachHangHoa";
+}
+
+@section BreadCum {
+    <div class="breadcrumb-area bg-gray" style="margin-top:100px;">
+        <div class="container">
+            <div class="breadcrumb-content text-center">
+                <ul>
+                    <li>
+                        <a style="color:#6c757d;" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="active"> <a asp-controller="Home" asp-action="Index"> Sản Phẩm</a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="col-lg-9">
+    <div class="shop-topbar-wrapper">
+        <div class="shop-topbar-left">
+            <div class="view-mode nav">
+                
+            </div>
+                        
+        </div>  
+     </div>
+                <!--Product Area-->
+     @await Html.PartialAsync("SanPham", Model)
+    <!-- Thanh phân trang tùy chỉnh -->
+    <div class="pro-pagination-style text-center mt-10">
+        <ul>
+            @if (Model.HasPreviousPage)
+            {
+                <li>
+                    <a class="prev" href="@Url.Action("Index", new { page = Model.PageNumber - 1, loai = ViewBag.Loai })">
+                        <i class="icon-arrow-left"></i>
+                    </a>
+                </li>
+            }
+
+            @for (int i = 1; i <= Model.PageCount; i++)
+            {
+                if (i == Model.PageNumber)
+                {
+                    <li><a class="active" href="#">@i</a></li>
+                }
+                else
+                {
+                    <li>
+                        <a href="@Url.Action("Index", new { page = i, loai = ViewBag.Loai })">@i</a>
+                    </li>
+                }
+            }
+
+            @if (Model.HasNextPage)
+            {
+                <li>
+                    <a class="next" href="@Url.Action("Index", new { page = Model.PageNumber + 1, loai = ViewBag.Loai })">
+                        <i class="icon-arrow-right"></i>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+           
+

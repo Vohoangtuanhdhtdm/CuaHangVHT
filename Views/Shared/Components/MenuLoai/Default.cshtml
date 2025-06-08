@@ -1,0 +1,10 @@
+﻿@model IEnumerable<CuaHangVHT.ViewModels.MenuLoaiVM>
+
+
+        <ul>
+            @foreach(var item in Model)
+            {
+                <li><a asp-controller="HangHoa" asp-action="Index" asp-route-loai="@item.MaLoai">@item.TenLoai  (@item.SoLuong)</a> </li>
+			}
+		</ul>
+ 

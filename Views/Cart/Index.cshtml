@@ -1,0 +1,107 @@
+﻿@model IEnumerable<CuaHangVHT.ViewModels.CartItemVM>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutSystem.cshtml";
+}
+
+ <div class="cart-main-area pt-115 pb-120">
+            <div class="container">
+        <h3 class="cart-page-title" style="padding:10px; border-left:solid #1d3557 3px;">Giỏ hàng</h3>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                 <form action="#" >
+                    <div class="table-content table-responsive cart-table-content">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Sản Phẩm</th>
+                                            <th>Tên</th>
+                                            <th>Size</th>
+                                            <th>Giá</th>
+                                            <th>Số lượng</th>
+                                            <th>Thành tiền</th>
+                                            <th>Hủy</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                @foreach(var item in Model)
+                                {
+                                <tr>
+                                            <td class="product-thumbnail">
+                                                 <img style="width:60px; height:60px;" src="~/assets/images/product/@item.Hinh" alt="">
+                                            </td>
+                                            <td class="product-name"><a asp-controller="HangHoa" asp-action="Index">@item.TenHH</a></td>
+                                        <td class="product-name"><span>@item.TenSize</span></td>
+                                        <td class="product-price-cart"><span class="amount"> @string.Format("{0:N0} VND", @item.DonGia)</span></td>
+                                        <td class="product-quantity pro-details-quality">
+                                            <div >
+                                                <span class="cart-plus-minus-box"> @item.SoLuong</span>
+                                            </div>
+                                        </td>
+
+                                        <td class="product-subtotal">@string.Format("{0:N0} VND", @item.ThanhTien)</td>
+                                            <td class="product-remove">
+                                            <a asp-controller="Cart" asp-action="RemoveCart" asp-route-id="@item.MaHh" ><i class="icon_close"></i></a>
+                                            </td>
+									</tr>
+								}
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="cart-shiping-update-wrapper">
+                                        <div  class="cart-shiping-update">
+                                    <a style="border-radius:15px;" asp-controller="HangHoa" asp-action="Index">Tiếp tục mua sắm</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                  </form>
+                        <div style="display:flex; align-items:center; justify-content:end;" class="row">
+                           
+                    
+                    <div class="col-lg-4 col-md-12">
+                        <div style="border-radius:15px;" class="grand-totall">
+                                    <div class="title-wrap">
+                                        <h4 class="cart-bottom-title section-bg-gary-cart">Tổng Thanh Toán</h4>
+                                    </div>
+                            <h5>Số tiền trong giỏ: <span> @string.Format("{0:N0} VND", @Model.Sum(p => p.ThanhTien))</span></h5>
+
+                            <h4 class="grand-totall-title">Tổng cộng <span>@string.Format("{0:N0} VND", @Model.Sum(p => p.ThanhTien))</span></h4>
+                            <a style="border-radius:15px;" asp-action="MuaHang" asp-controller="Cart">Thanh Toán</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+@* @section Scripts
+{
+    <script>
+        function updateQuantity(productId, newQuantity) {
+            if (newQuantity < 1) return;
+
+            fetch(`/Cart/UpdateQuantity`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ productId, quantity: newQuantity }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        location.reload();
+                    } else {
+                        alert("Cập nhật số lượng thất bại.");
+                    }
+                })
+                .catch(error => console.error("Error:", error));
+        }
+    </script> *@
+
+}

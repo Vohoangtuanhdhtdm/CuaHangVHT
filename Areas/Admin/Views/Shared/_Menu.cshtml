@@ -1,0 +1,79 @@
+﻿<div class="navbar-content">
+    <ul class="nxl-navbar">
+        <li class="nxl-item nxl-caption">
+            <label>Danh Mục</label>
+        </li>
+        <li class="nxl-item nxl-hasmenu">
+            <a href="javascript:void(0);" class="nxl-link">
+                <span class="nxl-micon"><i class="fa-solid fa-desktop"></i></span>
+                <span class="nxl-mtext">Quản lý chung</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+            </a>
+            <ul class="nxl-submenu">
+                <li class="nxl-item"><a class="nxl-link" asp-area="Admin" asp-controller="Products" asp-action="Index" >Sản Phẩm</a></li>
+                
+            </ul>
+        </li>
+        <li class="nxl-item nxl-hasmenu">
+            <a href="javascript:void(0);" class="nxl-link">
+                <span class="nxl-micon"><i class="fa-solid fa-store"></i></span>
+                <span class="nxl-mtext">Quản lý đơn hàng</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+            </a>
+            <ul class="nxl-submenu">
+                <li class="nxl-item"><a class="nxl-link" asp-controller="HoaDon" asp-action="Index">Tất cả đơn hàng</a></li>
+                <li class="nxl-item"><a class="nxl-link" asp-controller="HoaDon" asp-action="HoaDonDaDuyet">Đơn hàng đã duyệt</a></li>
+                <li class="nxl-item"><a class="nxl-link" asp-controller="HoaDon" asp-action="HoaDonHoanThanh">Đơn hàng đã xong</a></li>
+            </ul>
+        </li>
+        <li class="nxl-item nxl-hasmenu">
+            <a href="javascript:void(0);" class="nxl-link">
+                <span class="nxl-micon"><i class="fa-solid fa-users"></i></span>
+                <span class="nxl-mtext">Quản lý nhân viên</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+            </a>
+            <ul class="nxl-submenu">
+                <li class="nxl-item"><a class="nxl-link" asp-controller="NhanVien" asp-action="Index">Tất cả nhân viên</a></li>
+            </ul>
+        </li>
+        <li class="nxl-item nxl-hasmenu">
+            <a href="javascript:void(0);" class="nxl-link">
+                <span class="nxl-micon"><i class="fa-solid fa-hand-holding-heart"></i></span>
+                <span class="nxl-mtext">Quản lý khuyến mãi</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+            </a>
+            <ul class="nxl-submenu">
+                <li class="nxl-item"><a class="nxl-link" asp-controller="OrderDetailPromotions" asp-action="Index">Tất cả khuyến mãi</a></li>
+                <li class="nxl-item"><a class="nxl-link" asp-controller="Promotions" asp-action="Index">Tạo chương trình khuyến mãi</a></li>
+            </ul>
+        </li>
+        <li class="nxl-item nxl-hasmenu">
+            <a href="javascript:void(0);" class="nxl-link">
+                <span class="nxl-micon"><i class="fa-solid fa-chart-line"></i></span>
+                <span class="nxl-mtext">Thống Kê</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+            </a>
+            <ul class="nxl-submenu">
+                <li class="nxl-item nxl-hasmenu">
+                    <a href="javascript:void(0);" class="nxl-link">
+                        
+                        <span class="nxl-mtext">Sản Phẩm</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+                    </a>
+                    <ul class="nxl-submenu">
+                        <li class="nxl-item"><a class="nxl-link" asp-area="Admin" asp-controller="ThongKe" asp-action="SanPhamTopSelling">Sản Phẩm Bán Chạy</a></li>
+                        <li class="nxl-item"><a class="nxl-link" asp-area="Admin" asp-controller="ThongKe" asp-action="SanPhamDowSelling">Sản Phẩm Bán Chậm</a></li>
+                        
+                    </ul>
+                </li>
+                <li class="nxl-item nxl-hasmenu">
+                    <a href="javascript:void(0);" class="nxl-link">
+
+                        <span class="nxl-mtext">Doanh thu</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+                    </a>
+                    <ul class="nxl-submenu">
+                       
+                        <li class="nxl-item"><a class="nxl-link" asp-area="Admin" asp-controller="ThongKe" asp-action="DoanhThuThang">Theo tháng</a></li>
+                        <li class="nxl-item"><a class="nxl-link" asp-area="Admin" asp-controller="ThongKe" asp-action="DoanhThuNam">Theo năm</a></li>
+                    </ul>
+                </li>
+               
+            </ul>
+        </li>
+    </ul>
+   
+</div>

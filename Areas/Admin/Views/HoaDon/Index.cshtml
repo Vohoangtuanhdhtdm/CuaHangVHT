@@ -1,0 +1,195 @@
+﻿@model IEnumerable<CuaHangVHT.Data.Order>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Đơn Hàng Chưa Duyệt</h1>
+@foreach (var item in Model) {
+<div class="col-lg-12">
+    <div class="card stretch stretch-full">
+
+        <div class="card-body custom-card-action">
+            <div class="row g-0 align-items-center border border-dashed rounded-3 mb-4">
+                <div class="col-lg-4">
+                    <div class="d-lg-flex align-items-center">
+
+                        <div class="px-3">
+                                <a href="javascript:void(0);" class="fs-14 fw-bold text-truncate-1-line"><span class="badge bg-gray-200 text-dark ms-2">Mã số: @Html.DisplayFor(modelItem => item.OrderId)</span></a>
+                            <div class="fs-12 mt-3">
+                                <div class="hstack gap-2 text-muted mb-2">
+                                    <div class="avatar-text avatar-sm">
+                                        <i class="feather-phone-call"></i>
+                                    </div>
+                                        <span class="text-truncate-1-line"> @Html.DisplayFor(modelItem => item.DienThoai)</span>
+                                </div>
+                               
+                                <div class="hstack gap-2 text-muted mb-3">
+                                    <div class="avatar-text avatar-sm">
+                                        <i class="feather-map-pin"></i>
+                                    </div>
+                                        <span class="text-truncate-1-line">  @Html.DisplayFor(modelItem => item.DiaChi)</span>
+                                </div>
+                                <div class="hstack gap-2 text-muted mb-3">
+                                        <div class="avatar-text avatar-sm">
+                                            <i class="feather-map-pin"></i>
+                                        </div>
+                                        <span class="text-truncate-1-line">@Html.DisplayFor(modelItem => item.Hoten)</span>
+                                    </div>
+                                <div class="hstack gap-2 text-muted mb-3">
+                                        <div class="avatar-text avatar-sm">
+                                            <i class="feather-map-pin"></i>
+                                        </div>
+                                        <span class="text-truncate-1-line">@Html.DisplayFor(modelItem => item.CreatedAt)</span>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 offset-lg-2 p-3">
+                    <div class="row gy-4 gx-5 align-items-center">
+                        <div class="col-lg-6 col-xl-4">
+                            <div class="mb-4">
+                                <label class="fs-12 text-muted">Tổng Hóa Đơn</label>
+                                    <div class="fs-14 fw-bold text-dark">
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TotalPrice)
+                                        </td>
+                                    </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-6 col-xl-4">
+
+                            <div class="hstack gap-2">
+
+                                    <a style="width:250px;" asp-action="Edit" asp-route-id="@item.OrderId" >
+                                    <i class="feather-edit"></i>Duyệt Hóa Đơn
+                                </a>
+
+                                    <a style="width:200px;" asp-action="Details" asp-route-id="@item.OrderId" class="">
+                                    <i class="feather-grid"></i>Chi Tiết
+                                </a>
+
+                            </div>
+                        </div>
+                        <div class="col-xl-4 d-lg-none d-xl-block">
+                            <div class="lead-progress-1 text-start text-lg-end"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+}
+
+<!--
+@* <p>
+    <a asp-action="Create">Create New</a>
+</p> *@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID Hóa Đơn
+            </th>
+            <th>
+               Tổng Hóa Đơn
+            </th>
+            <th>
+                Thanh Toán
+            </th>
+            <th>
+                Ngày Đặt Hàng
+            </th>
+            @* <th>
+                @Html.DisplayNameFor(model => model.UpdatedAt)
+            </th> *@
+            <th>
+                Họ Tên
+            </th>
+            <th>
+               Địa Chỉ 
+            </th>
+            <th>
+                Thanh Toán
+            </th>
+            <th>
+                Đơn Vị Vận Chuyển
+            </th>
+            <th>
+               Điện Thoại
+            </th>
+            @* <th>
+                @Html.DisplayNameFor(model => model.MaTrangThai)
+            </th> *@
+            <th>
+                Ghi Chú
+            </th>
+            @* <th>
+                @Html.DisplayNameFor(model => model.Employee)
+            </th> *@
+            @* <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th> *@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderId)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            @* <td>
+                @Html.DisplayFor(modelItem => item.UpdatedAt)
+            </td> *@
+            <td>
+                @Html.DisplayFor(modelItem => item.Hoten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CachThanhToan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CachVanChuyen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DienThoai)
+            </td>
+           @*  <td>
+                @Html.DisplayFor(modelItem => item.MaTrangThai)
+            </td> *@
+            <td>
+                @Html.DisplayFor(modelItem => item.GhiChu)
+            </td>
+            @* <td>
+                @Html.DisplayFor(modelItem => item.Employee.EmployeeId)
+            </td> *@
+           @*  <td>
+                @Html.DisplayFor(modelItem => item.User.UserId)
+            </td> *@
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.OrderId">Duyệt</a> |
+                <a asp-action="Details" asp-route-id="@item.OrderId">Chi Tiết</a> |
+                <a asp-action="Delete" asp-route-id="@item.OrderId">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+-->

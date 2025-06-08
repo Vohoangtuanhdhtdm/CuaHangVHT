@@ -1,0 +1,82 @@
+﻿@model CuaHangVHT.ViewModels.SuccessVM
+
+@{
+    ViewData["Title"] = "Success";
+    Layout = "~/Views/Shared/_LayoutSystem.cshtml";
+}
+
+<div style="font-family: Arial, sans-serif; background-color: #f8f9fa; padding: 20px; margin:100px auto;">
+    <div class="container">
+        <!-- Order Summary Card -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-success text-white text-center" style="font-size: 1.2rem; font-weight: bold;">
+                Thông Tin Đơn Hàng
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <p><strong>Mã Hóa Đơn:</strong> @Model.HoaDon.OrderId</p>
+                        <p><strong>Họ Tên Khách Hàng:</strong> @Model.HoaDon.Hoten</p>
+                        <p><strong>Địa Chỉ:</strong> @Model.HoaDon.DiaChi</p>
+                        <p><strong>Số Điện Thoại:</strong> @Model.HoaDon.DienThoai</p>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <p><strong>Ngày Đặt Hàng:</strong> @Model.HoaDon.CreatedAt</p>
+                        <p><strong>Phương Thức Thanh Toán:</strong> @Model.HoaDon.CachThanhToan</p>
+                        <p><strong>Trạng Thái:</strong> <span class="badge bg-success">@Model.HoaDon.Status</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Items Table -->
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white text-center" style="font-size: 1.2rem; font-weight: bold;">
+                Chi Tiết Sản Phẩm
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Sản Phẩm</th>
+                            <th>Số Lượng</th>
+                            
+                            <th>Giá</th>
+                            <th>Thành Tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.ChiTietHoaDon.Count; i++)
+                        {
+                            var item = Model.ChiTietHoaDon[i];
+                            <tr>
+                                <td>@(i + 1)</td>
+                                <td>@item.Product.Name - (@item.ProductSize.SizeName)</td>
+                                <td>@item.Quantity</td>
+                                <td>@string.Format("{0:N0} VND", item.Price)</td>
+                                <td>@string.Format("{0:N0} VND", item.Quantity * item.Price)</td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            
+                            <th colspan="4" class="text-end">Tổng Cộng:</th>
+                            <th> Giảm:  <span style="color:#ae2012">@string.Format("{0:N0} VND", @Model.Dicount)</span>, Còn:  @string.Format("{0:N0} VND", Model.HoaDon.TotalPrice)</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <div class="text-center mt-4">
+            <div>
+                <img style="border-radius:25%; width:200px; height:auto;" src="~/assets/images/ThankYou.jpg" alt="hinh anh" />
+                <span style="font-size: 1.2rem; color: #555;">Cảm ơn bạn đã đặt hàng! Chúng tôi sẽ sớm gửi đến bạn.</span>
+            </div>
+            <a href="/home" class="btn btn-outline-primary" style="padding: 10px 20px; font-size: 1rem;">Quay Lại Trang Chủ</a>
+        </div>
+    </div>
+</div>

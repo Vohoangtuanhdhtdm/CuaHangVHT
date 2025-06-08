@@ -1,0 +1,54 @@
+﻿@model IEnumerable<CuaHangVHT.Data.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Danh Sách Nhân Viên</h1>
+
+<p>
+    <a asp-action="Create">Thêm Nhân Viên</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Điện thoại
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Vị trí công việc
+            </th>
+            <th>
+                Tên nhân viên
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position.PositionName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.FullName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.EmployeeId">Chỉnh Sửa</a> |
+                <a asp-action="Details" asp-route-id="@item.EmployeeId">Chi Tiết</a> |
+                <a asp-action="Delete" asp-route-id="@item.EmployeeId">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

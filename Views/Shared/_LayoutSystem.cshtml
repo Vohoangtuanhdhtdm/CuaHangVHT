@@ -1,0 +1,246 @@
+﻿<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>tUan Shop</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/assets/images/logo/LogoWeb.svg">
+
+    <!-- All CSS is here
+    ============================================ -->
+
+    <link rel="stylesheet" href="~/assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/vendor/simple-line-icons.css">
+    <link rel="stylesheet" href="~/assets/css/vendor/elegant.css">
+    <link rel="stylesheet" href="~/assets/css/vendor/linear-icon.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/nice-select.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/easyzoom.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/slick.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/animate.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/magnific-popup.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/jquery-ui.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+ 
+
+
+
+    @RenderSection("Styles", required: false)
+</head>
+
+<body>
+
+    <div class="main-wrapper">
+        <header class="header-area transparent-bar section-padding-1">
+            <div class="container-fluid">
+                <div class="header-large-device">
+                    <div class="header-bottom">
+                        <div class="row align-items-center">
+                            <div class="col-xl-2 col-lg-2">
+                                <div class="logo">
+                                    <a asp-controller="Home" asp-action="Index"><img style="width:100px; height:auto; margin-left:20px;" src="~/assets/images/logo/LogoWeb.svg" alt="logo"></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-8 col-lg-7">
+                                <div class="main-menu main-menu-padding-1 main-menu-lh-1">
+                                    <nav>
+                                        <ul>
+                                            <li>
+                                                <a asp-controller="Home" asp-action="Index">Trang Chủ </a>
+
+                                            </li>
+                                            <li>
+                                                <a asp-controller="HangHoa" asp-action="Index">Sản Phẩm </a>
+                                                <ul class="mega-menu-style mega-menu-mrg-1">
+                                                    <li>
+                                                        <ul>
+                                                            <li >
+                                                                <a class="dropdown-title" style="padding-bottom:2px;">Tất cả sản phẩm</a>
+                                                                @await Component.InvokeAsync("MenuLoai")
+                                                            </li>
+                                                            
+                                                           
+                                                            <li >
+                                                                <a style="padding-right: 20px;" ><img style="width: 250px; height: auto; object-fit:cover" src="~/assets/images/banner/BST1.jpg" alt=""></a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a asp-controller="Home" asp-action="About">Về Tôi </a>
+
+                                            </li>
+                                            <li>
+                                                <a asp-controller="BlogPosts" asp-action="Index">BLOG </a>
+
+                                            </li>
+                                            <li><a asp-controller="Home" asp-action="Contact">Liên Hệ </a></li>
+                                            @if ((!User.IsInRole("Customer")) && User.Identity.IsAuthenticated)
+                                            {
+                                                <li><a asp-area="Admin" asp-controller="Home" asp-action="Index">  <i class="icon-arrow-left-circle"></i> Đến Trang Admin </a></li>
+                                            }
+                                            
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                         
+                            <div class="col-xl-2 col-lg-3">
+                                <div class="header-action header-action-flex header-action-mrg-right">
+
+                                    <div class="same-style-2">
+                                        <a asp-controller="TaiKhoan" asp-action="Dangnhap"><i class="icon-user"></i></a>
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            <a style="font-size:15px;" asp-controller="TaiKhoan" asp-action="Profile">
+                                                <span >Hello, @User.Identity.Name!</span>
+                                                
+                                            </a>
+                                        }
+                                    </div>
+
+                                    @await Component.InvokeAsync("Cart")
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-small-device small-device-ptb-1">
+                    <div class="row align-items-center">
+                        <div class="col-5">
+                            <div class="mobile-logo">
+                                <div class="logo">
+                                    <a asp-controller="Home" asp-action="Index"><img style="width:100px; height:auto; margin-left:20px;" src="~/assets/images/logo/LogoWeb.svg" alt="logo"></a>
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div>
+            @RenderBody()
+        </div>
+
+        <div class="subscribe-area bg-gray pt-50 pb-50">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5">
+                        <div class="section-title">
+                            <h2>Liên hệ với chúng tôi:</h2>
+                            <p>Mọi góp ý xin gửi về địa chỉ này:</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-7">
+                        <div id="mc_embed_signup" class="subscribe-form">
+                            <form id="mc-embedded-subscribe-form" class="validate subscribe-form-style" novalidate="" target="_blank" name="mc-embedded-subscribe-form" method="post" action="https://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef">
+                                <div id="mc_embed_signup_scroll" class="mc-form">
+                                    <input class="email" type="email" required="" placeholder="gửi góp ý của bạn tại đây" name="EMAIL" value="">
+                                    <div class="mc-news" aria-hidden="true">
+                                        <input type="text" value="" tabindex="-1" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef">
+                                    </div>
+                                    <div class="clear">
+                                        <input id="mc-embedded-subscribe" class="button" type="submit" name="subscribe" value="Gửi">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer-area bg-gray pb-10">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="contact-info-wrap">
+                            <div class="footer-logo">
+                                <a asp-controller="Home" asp-action="Index"><img style="width:150px; height:100px;" src="~/assets/images/logo/LogoWeb.svg" alt="logo"></a>
+                            </div>
+                            <div class="single-contact-info">
+                                <span>Địa chỉ liên hệ:</span>
+                                <p>Số 06, Trần Văn Ơn, Phú Hòa, Thủ Dầu Một, Bình Dương</p>
+                            </div>
+                            <div class="single-contact-info">
+                                <span>Số điện thoại:</span>
+                                <p>0123456789</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="footer-right-wrap">
+                            <div class="footer-menu">
+                                <nav>
+                                    <ul>
+                                        <li><a asp-controller="Home" asp-action="Index">Trang Chủ</a></li>
+                                        <li><a asp-controller="HangHoa" asp-action="Index">Sản Phẩm</a></li>
+                                        <li><a asp-controller="Home" asp-action="About">Về Tôi </a></li>
+                                        <li><a asp-controller="BlogPosts" asp-action="Index">Blog</a></li>
+                                        <li><a asp-controller="Home" asp-action="Contact">Liên Hệ</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="social-style-2 social-style-2-mrg">
+                                <a ><i class="social_twitter"></i></a>
+                                <a ><i class="social_facebook"></i></a>
+                                <a ><i class="social_instagram"></i></a>
+                           
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    
+        
+        
+    </div>
+
+    <!-- All JS is here
+    ============================================ -->
+
+    <script src="~/assets/js/vendor/modernizr-3.11.7.min.js"></script>
+    <script src="~/assets/js/vendor/jquery-v3.6.0.min.js"></script>
+    <script src="~/assets/js/vendor/jquery-migrate-v3.3.2.min.js"></script>
+    <script src="~/assets/js/vendor/popper.min.js"></script>
+    <script src="~/assets/js/vendor/bootstrap.min.js"></script>
+    <script src="~/assets/js/plugins/slick.js"></script>
+    <script src="~/assets/js/plugins/jquery.syotimer.min.js"></script>
+    <script src="~/assets/js/plugins/jquery.nice-select.min.js"></script>
+    <script src="~/assets/js/plugins/wow.js"></script>
+    <script src="~/assets/js/plugins/jquery-ui.js"></script>
+    <script src="~/assets/js/plugins/magnific-popup.js"></script>
+    <script src="~/assets/js/plugins/sticky-sidebar.js"></script>
+    <script src="~/assets/js/plugins/easyzoom.js"></script>
+    <script src="~/assets/js/plugins/scrollup.js"></script>
+    <script src="~/assets/js/plugins/ajax-mail.js"></script>
+    <!-- Main JS -->
+    <script src="~/assets/js/main.js"></script>
+    <!--Jquery-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+    <!--CKeditor-->
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger intent="WELCOME"
+                  chat-title="tUan_Store"
+                  agent-id="7c165db9-d1ae-46a1-930e-4e7bb6a28bdf"
+                  language-code="en"></df-messenger>
+    @await Component.InvokeAsync("Notyf")
+    @RenderSection("Scripts", required: false)
+   
+</body>
+
+</html>

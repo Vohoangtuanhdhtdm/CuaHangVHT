@@ -1,0 +1,113 @@
+﻿@model CuaHangVHT.Data.Order
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="card">
+    <div style="text-align:center;" class="card-header">
+        <h4 >Thông tin đơn hàng</h4>
+    </div>
+    <div class="card-body">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+            <input type="hidden" asp-for="OrderId" />
+
+            <!-- Thông tin người dùng -->
+            <div class="mb-4">
+                <h5 >Thông tin khách hàng</h5>
+                <div class="form-group">
+                  @*   <label asp-for="UserId" class="control-label"></label> *@
+                    <input type="hidden" asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></input>
+                    <span asp-validation-for="UserId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Hoten" class="control-label">Họ Tên</label>
+                    <input asp-for="Hoten" class="form-control" />
+                    <span asp-validation-for="Hoten" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DienThoai" class="control-label">Điện thoại</label>
+                    <input asp-for="DienThoai" class="form-control" />
+                    <span asp-validation-for="DienThoai" class="text-danger"></span>
+                </div>
+            </div>
+            <!-- Thông tin giao hàng -->
+            <div class="mb-4">
+                <h5 >Thông tin giao hàng</h5>
+                <div class="form-group">
+                    <label asp-for="DiaChi" class="control-label">Địa chỉ</label>
+                    <input asp-for="DiaChi" class="form-control" />
+                    <span asp-validation-for="DiaChi" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CachVanChuyen" class="control-label">Đơn vị vận chuyển</label>
+                    <input asp-for="CachVanChuyen" class="form-control" />
+                    <span asp-validation-for="CachVanChuyen" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CachThanhToan" class="control-label">Phương thức thanh toán</label>
+                    <input asp-for="CachThanhToan" class="form-control" />
+                    <span asp-validation-for="CachThanhToan" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- Thông tin đơn hàng -->
+            <div class="mb-4">
+                <h5 >Thông tin đơn hàng</h5>
+                <div class="form-group">
+                    <label asp-for="TotalPrice" class="control-label">Tổng Hóa Đơn</label>
+                    <input asp-for="TotalPrice" class="form-control" />
+                    <span asp-validation-for="TotalPrice" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Status" class="control-label">Trạng Thái Thanh Toán</label>
+                    <input asp-for="Status" class="form-control" />
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CreatedAt" class="control-label">Ngày Đặt</label>
+                    <input asp-for="CreatedAt" class="form-control" />
+                    <span asp-validation-for="CreatedAt" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="GhiChu" class="control-label">Ghi Chú Đơn Hàng</label>
+                    <input asp-for="GhiChu" class="form-control" />
+                    <span asp-validation-for="GhiChu" class="text-danger"></span>
+                </div>
+                
+            </div>
+
+           
+
+            <!-- Ghi chú và nhân viên -->
+            <div class="mb-4">
+                <h5 >Ghi chú và nhân viên</h5>
+               
+                <div class="form-group">
+                    <label asp-for="EmployeeId" class="control-label">Nhân viên xác nhận đơn hàng</label>
+                    <select asp-for="EmployeeId" class="form-control" asp-items="ViewBag.EmployeeId"> <option value="">-- Chọn Mã Nhân Viên --</option></select>
+                    <span asp-validation-for="EmployeeId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MaTrangThai" class="control-label">Nhân viên xác nhận trạng thái giao hàng</label>
+                    <select asp-for="MaTrangThai" class="form-control">
+                        <option value="">-- Chọn Trạng Thái --</option>
+                        <option value="Xong">Xong</option>
+                        <option value="Lỗi">Lỗi</option>
+                        <option value="Đã Giao">Đã Giao</option>
+                    </select>
+                    <span asp-validation-for="MaTrangThai" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Lưu" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+            </div>
+        </form>
+    </div>
+</div>

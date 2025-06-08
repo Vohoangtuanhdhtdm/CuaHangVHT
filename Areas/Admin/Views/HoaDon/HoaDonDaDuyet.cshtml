@@ -1,0 +1,89 @@
+﻿@model IEnumerable<CuaHangVHT.Data.Order>
+@{
+    ViewData["Title"] = "HoaDonDaDuyet";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+
+
+<h1>Đơn Hàng Chờ Giao</h1>
+
+@* <p>
+    <a asp-action="Create">Create New</a>
+</p> *@
+<table class="table" style="text-align:center;">
+    <thead>
+        <tr>
+            <th>
+                ID Hóa Đơn
+            </th>
+            
+            <th>
+                Thanh Toán
+            </th>
+           
+            <th>
+                Thanh Toán
+            </th>
+            <th>
+                Đơn Vị Vận Chuyển
+            </th>
+            <th>
+                Điện Thoại
+            </th>
+            <th>
+            Trạng thái giao hàng
+            </th>
+            <th>
+                Ghi Chú
+            </th>
+            <th>
+            ID Nhân Viên Duyệt
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderId)
+                </td>
+               
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+               
+                <td>
+                    @Html.DisplayFor(modelItem => item.CachThanhToan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CachVanChuyen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DienThoai)
+                </td>
+                 <td>
+            @Html.DisplayFor(modelItem => item.MaTrangThai)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GhiChu)
+                </td>
+                <td>
+                 @Html.DisplayFor(modelItem => item.EmployeeId)
+                </td>
+              
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.OrderId">Giao Hàng</a> 
+                   
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
